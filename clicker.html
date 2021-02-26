@@ -1,0 +1,89 @@
+<script>
+    var cookiecount = 0;
+</script>
+
+<html>
+    <head><title id="count">0 coockie</title></head>
+    <body>
+       <a href="#" onclick="add()"><img  src="img/photo-1597895139270-a5dee112224d.jpg"></img></a>
+       
+       <h1>You got:</h1>
+       <input type="text" id="text" disabled style=text-align:center>
+	<button id="reset">Reset</button>
+       <script>
+           document.getElementById('count').innerText = getCookie('count') + ' coockies';
+           document.getElementById('text').value = getCookie('count') + ' coockies';
+            function add(){
+				if(getCookie('count') !== 'NaN' && getCookie('count') !== '')
+				{
+					 cookiecount = getCookie('count');
+					console.log(document.cookie)
+				}
+				cookiecount = parseInt(cookiecount) + 1;
+               document.cookie = 'count=' + cookiecount
+               document.getElementById('text').value = cookiecount;
+               document.title = cookiecount + "Cookies";
+           }
+            function getCookie(cname) {
+                var name = cname + "=";
+                var decodedCookie = decodeURIComponent(document.cookie);
+                var ca = decodedCookie.split(';');
+                for(var i = 0; i <ca.length; i++) {
+                    var c = ca[i];
+                    while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                    }
+                    if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                    }
+                }
+                return "";
+            }
+		   document.getElementById('reset').addEventListener('click', function() {
+			    document.cookie = 'count=0';
+			   document.getElementById('text').value = '0 coockies';
+			   document.getElementById('count').innerText = '0 coockies';
+		   })
+       </script>
+    </body>
+</html>
+
+
+<style>
+    img {
+        display: flex;
+        justify-content: center;
+        margin: 0 auto;
+        width: 20%;
+    }
+
+    input {
+        display: flex;
+        justify-content: center;
+        margin: 0 auto;
+        background-color: #3CBC8D;
+        color: white;
+        width: 13%;
+        height: 5%;
+    }
+
+    h1 {
+        display: flex;
+        justify-content: center;
+        margin: 0 auto;
+    }
+
+   button {
+      display: flex;
+      justify-content: center;
+      margin: 0 auto;
+	  margin-top: 20px;
+	  background-color: #4CAF50;
+	  border: none;
+	  color: white;
+	  padding: 15px 32px;
+	  text-align: center;
+	  text-decoration: none;
+    }
+
+</style>
